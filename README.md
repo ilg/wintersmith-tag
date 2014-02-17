@@ -95,7 +95,7 @@ each tag in tags
 ```
 wintersmith build -v
 ```
-Lists of articles filtered by tags are created successfully!
+Lists of articles filtered by tags have been created successfully!
 ```
 /tag/algorithm/1/index.html
 /tag/algorithm/2/index.html

@@ -14,7 +14,7 @@ module.exports = (env, callback) ->
     perPage: 2 # number of articles per page
 
   tagDefaults = 
-    filename: 'tag/%s/%d/index.html' # filename for rest of pages
+    filename: 'tag/%s/%d/index.html' # => tag/:tagName/:pageNum/index.html
 
 
   # assign defaults any option not set in the config file

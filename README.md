@@ -7,7 +7,7 @@ For a complete example, please take a look at [thecoolwei.com](http://thecoolwei
 
 ## How to use
 
-## Step1: install
+### Step1: install
 
 Install globally or locally using npm
 

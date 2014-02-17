@@ -1,6 +1,6 @@
 {
   "name": "wintersmith-tag",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A wintersmith plugin to create tags.",
   "author": "Ribao Wei (wrb302@gmail.com)",
   "license": "MIT",

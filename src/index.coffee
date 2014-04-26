@@ -50,10 +50,16 @@ module.exports = (env, callback) ->
   getTagsFromArticle = (article) -> 
     if article.metadata.tags then article.metadata.tags.split(/,\s*/) else []
 
+  # return a list of articles
+  getArticles = (contents) -> 
+    if contents[options.articles] 
+    then contents[options.articles]._.directories.map (item) -> item.index
+    else []
+
   # parse and store the global set of tags in alltags
   processTags = (contents) ->
     tags = {}
-    articles = contents[options.articles]._.directories.map (item) -> item.index
+    articles = getArticles(contents)
     articles.forEach (article) ->
       getTagsFromArticle(article).forEach (tag) ->
         tags[tag] = tag
@@ -61,7 +67,7 @@ module.exports = (env, callback) ->
 
   # return a list of articles that have tag tagName
   getArticlesByTag = (contents, tagName) ->
-    articles = contents[options.articles]._.directories.map (item) -> item.index
+    articles = getArticles(contents)
     articles.sort (a, b) -> b.date - a.date
     return articles.filter (a) -> a.metadata.tags and a.metadata.tags.split(/,\s*/).indexOf(tagName) > -1
 

@@ -1,7 +1,5 @@
 ### A Wintersmith tag plugin based on the built-in paginator plugin ###
 
-_ = require "underscore"
-
 module.exports = (env, callback) ->
   ### Tag plugin. Defaults can be overridden in config.json
       e.g. "tag": {"perPage": 10} ###
@@ -16,9 +14,25 @@ module.exports = (env, callback) ->
   tagDefaults = 
     filename: 'tag/%s/%d/index.html' # => tag/:tagName/:pageNum/index.html
 
+  # An implementation of underscore's extend function
+  extend2 = (dest, src) -> 
+    for key, value of src
+      dest[key] = src[key]
+    dest
+
+  extend = () ->
+    args = Array.prototype.slice.apply(arguments)
+    ret = args[0]
+    if args.length >= 2
+      i = 1
+      while(i<args.length)
+        extend2.call(this, ret, args[i])
+        i++
+    ret
 
   # assign defaults any option not set in the config file
-  options = _.extend {}, paginatorDefaults, env.config.paginator, tagDefaults, env.config.tag
+  options = extend {}, paginatorDefaults, env.config.paginator, tagDefaults, env.config.tag
+
 
   # a map from a tag to its home page
   tagHomePages = {}
